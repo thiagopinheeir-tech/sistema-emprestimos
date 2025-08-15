@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sistema de Empréstimos</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body data-color-scheme="dark">
+    <!-- Login Page -->
+    <div class="login-container" id="loginContainer">
+        <div class="login-card">
+            <div class="login-header">
+                <div class="app-icon">💰</div>
+                <h1 class="login-title">Sistema de Empréstimos</h1>
+                <p class="login-subtitle">Faça login para continuar</p>
+            </div>
+            <form class="login-form" id="loginForm">
+                <div class="form-group">
+                    <label class="form-label" for="loginUsuario">Usuário</label>
+                    <input type="text" id="loginUsuario" class="form-control" placeholder="Digite seu usuário" required>
+                </div>
+                <div class="form-group">
+                    <label class="form-label" for="loginSenha">Senha</label>
+                    <input type="password" id="loginSenha" class="form-control" placeholder="Digite sua senha" required>
+                </div>
+                <div class="login-error hidden" id="loginError">Usuário ou senha inválidos</div>
+                <button type="submit" class="btn btn--primary btn--full-width login-btn" id="loginBtn">
+                    <span class="login-btn-text">Entrar</span>
+                    <span class="login-btn-loading hidden">Entrando...</span>
+                </button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Main Application -->
+    <div class="app-container hidden" id="appContainer">
+        <!-- Sidebar (Desktop Only) -->
+        <aside class="sidebar" id="sidebar">
+            <div class="sidebar-header">
+                <h2 class="sidebar-title">Sistema Empréstimos</h2>
+            </div>
+            <nav class="sidebar-nav">
+                <button class="nav-item active" data-page="dashboard">
+                    <span class="nav-icon">📊</span>
+                    <span class="nav-text">Dashboard</span>
+                </button>
+                <button class="nav-item" data-page="cadastro">
+                    <span class="nav-icon">👤</span>
+                    <span class="nav-text">Cadastro de Clientes</span>
+                </button>
+                <button class="nav-item" data-page="emprestimos">
+                    <span class="nav-icon">📋</span>
+                    <span class="nav-text">Tabela de Empréstimos</span>
+                </button>
+                <button class="nav-item" data-page="historico">
+                    <span class="nav-icon">📈</span>
+                    <span class="nav-text">Histórico</span>
+                </button>
+                <button class="nav-item admin-only hidden" data-page="usuarios">
+                    <span class="nav-icon">👥</span>
+                    <span class="nav-text">Gerenciar Usuários</span>
+                </button>
+            </nav>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <!-- Header -->
+            <header class="header">
+                <button class="sidebar-toggle" id="sidebarToggle">☰</button>
+                <h1 class="page-title" id="pageTitle">Dashboard</h1>
+                <div class="header-user">
+                    <span class="user-info">
+                        <span class="user-name" id="userName">Usuário</span>
+                        <span class="user-role" id="userRole">Perfil</span>
+                    </span>
+                    <button class="btn btn--sm btn--secondary" id="logoutBtn">Sair</button>
+                </div>
+            </header>
+
+            <!-- Pages Container -->
+            <div id="pagesContainer">
+                <!-- Conteúdo será carregado dinamicamente -->
+            </div>
+        </main>
+
+        <!-- Bottom Navigation (Mobile Only) -->
+        <nav class="bottom-nav" id="bottomNav" style="display: none;">
+            <button class="nav-item active" data-page="dashboard">
+                <span class="nav-icon">📊</span>
+                <span class="nav-label">Dashboard</span>
+            </button>
+            <button class="nav-item" data-page="cadastro">
+                <span class="nav-icon">👥</span>
+                <span class="nav-label">Clientes</span>
+            </button>
+            <button class="nav-item" data-page="emprestimos">
+                <span class="nav-icon">💳</span>
+                <span class="nav-label">Empréstimos</span>
+            </button>
+            <button class="nav-item" data-page="historico">
+                <span class="nav-icon">📊</span>
+                <span class="nav-label">Histórico</span>
+            </button>
+            <button class="nav-item admin-only hidden" data-page="usuarios">
+                <span class="nav-icon">⚙️</span>
+                <span class="nav-label">Usuários</span>
+            </button>
+        </nav>
+    </div>
+
+    <!-- Scripts -->
+    <script src="utils.js"></script>
+    <script src="dashboard.js"></script>
+    <script src="clientes.js"></script>
+    <script src="emprestimos.js"></script>
+    <script src="historico.js"></script>
+    <script src="usuarios.js"></script>
+    <script src="app.js"></script>
+</body>
+</html>
